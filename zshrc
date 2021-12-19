@@ -1,4 +1,4 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Enable Powerlevel11k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -102,7 +102,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias cat="ccat"
+alias cat="bat"
 alias duh="du -h -s *"
 
 HISTFILE=~/.histfile
@@ -112,10 +112,18 @@ setopt autocd notify
 unsetopt beep
 bindkey -v
 
+# fzf
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
-export FZF_CTRL_T_OPTS="--select-1 --exit-0"
-export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+export FZF_CTRL_T_COMMAND='rg --files --hidden'
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numers --line-range=:500 {}'"
+export FZF_ALT_C_COMMAND='rg --files --hidden'
+export FZF_ALT_C_OPTS="--preview 'bat --color=always --style=numers --line-range=:500 {}'"
 export FZF_TMUX=1
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# brew
+eval "$(/home/crash/.linuxbrew/bin/brew shellenv)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -135,4 +143,3 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -1,5 +1,5 @@
 set nocompatible
-
+" general config 
 colorscheme codedark
 syntax on               " syntax highlighting
 
@@ -40,11 +40,13 @@ set hlsearch            " highlight matches
 " keybindings 
 let mapleader = " "
 set timeoutlen=500
-map <silent> <leader>r :call ToggleRelnumber()<CR>
+map <leader>r :call ToggleRelnumber()<CR>
 map <leader>n :tabn<CR>
 map <leader>p :tabp<CR>
 map <leader>e :Explore<CR>
-map <silent> <leader>f :FZF<CR>
+map <leader>f :Files<CR>
+map <leader>b :Buffers<CR>
+map <leader>g :Rg<CR>
 nnoremap <F9> :Black<CR>
 nmap <silent> <C-e> <Plug>(ale_next_wrap)
 
@@ -57,26 +59,25 @@ let g:netrw_winsize=15
 " complete with tab instead
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
-" functions
+" functions 
 function! ToggleRelnumber()
     set norelativenumber!
 endfunction
 
-" plugins
+" plugins 
 let g:lightline = { 'colorscheme': 'powerlineish' }
-
 let g:ale_fixers = {
 \ '*' : ['remove_trailing_lines', 'trim_whitespace'],
 \ 'c': ['clang-format'],
 \ 'python': ['black'],
 \}
-" let g:ale_lint_on_enter = 0
+let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
 let g:ale_sign_error = '●'
 let g:ale_sign_warning = '.'
-
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.4, 'border': 'rounded', 'yoffset': 1.0} }
 let g:rainbow_active = 1
 
 " VimPlug
@@ -93,6 +94,7 @@ call plug#begin('~/.vim/plugins')
 Plug 'dense-analysis/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'luochen1990/rainbow'
 Plug 'maralla/completor.vim'
 Plug 'psf/black', { 'branch': 'stable' }

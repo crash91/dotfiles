@@ -1,46 +1,36 @@
+- defaults: 
+    link:
+      create: true
+      force: true
+      relink: true
+    shell:
+      stdin: true
+      stdout: true
+      stderr: true
+
 - clean: ['~']
 
 - link:
     ~/.gitconfig: gitconfig
-    ~/.p10k.zsh:
-      force: true
-      relink: true
-      path: p10k.zsh
-    ~/.tmux.conf: 
-      force: true 
-      relink: true
-      path: tmux.conf
-    ~/.vimrc:
-      force: true 
-      relink: true
-      path: vimrc
-    ~/.zshrc: 
-      force: true 
-      relink: true
-      path: zshrc
+    ~/.p10k.zsh: p10k.zsh
+    ~/.tmux.conf: tmux.conf
+    ~/.vimrc: vimrc
+    ~/.zshrc: zshrc
 
 - shell:
   - git submodule update --init --recursive
-  - command: chsh -s $(which zsh)
-    stdin: true
-    stdout: true
-    stderr: true
+    # change to zsh and get plugins / omz
+  - chsh -s $(which zsh)
   - git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
-  - git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-  - command: wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh && sh ./Mambaforge-Linux-x86_64.sh
-    stdin: true
-    stdout: true
-    stderr: true
+  - git clone --depth 1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+  - git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  - git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  - ~/.fzf/install
+  # tpm
+  - git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  - wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh && sh ./Mambaforge-Linux-x86_64.sh
+  # python with mambaforge
   - rm ./Mambaforge-Linux-x86_64.sh
-  - command: ~/mambaforge/bin/conda init zsh 
-    stdin: true
-    stdout: true
-    stderr: true
-  - command: ~/mambaforge/bin/conda install numpy scipy black jedi matplotlib autopep8
-    stdin: true
-    stdout: true
-    stderr: true
-  - command: pip3 install soundfile ptpython
-    stdin: true
-    stdout: true
-    stderr: true
+  - ~/mambaforge/bin/conda init zsh 
+  - ~/mambaforge/bin/conda install numpy scipy black jedi matplotlib autopep8 tqdm
+  - pip3 install soundfile ptpython

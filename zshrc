@@ -75,7 +75,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(colorize z zsh-syntax-highlighting)
+plugins=(colorize fzf z zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,10 +102,6 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zcfg="vim ~/.zshrc"
-alias tmuxcfg="vim ~/.tmux.conf"
-alias vimcfg="vim ~/.vimrc"
-#alias ohmyzsh="mate ~/.oh-my-zsh"
 alias cat="ccat"
 alias duh="du -h -s *"
 
@@ -114,9 +110,12 @@ HISTSIZE=100000
 SAVEHIST=100000
 setopt autocd notify
 unsetopt beep
-bindkey -e
+bindkey -v
 
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+export FZF_CTRL_T_OPTS="--select-1 --exit-0"
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+export FZF_TMUX=1
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -135,3 +134,5 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

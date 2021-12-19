@@ -1,3 +1,5 @@
 [user]
 	name = Archit Tamarapu
 	email = archit.tamarapu@gmail.com
+[core]
+	editor = vim

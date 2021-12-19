@@ -32,5 +32,5 @@
   # python with mambaforge
   - rm ./Mambaforge-Linux-x86_64.sh
   - ~/mambaforge/bin/conda init zsh 
-  - ~/mambaforge/bin/conda install numpy scipy black jedi matplotlib autopep8 tqdm
+  - ~/mambaforge/bin/conda install black flake8 jedi jupyter notebook numpy matplotlib scipy tqdm
   - pip3 install soundfile ptpython

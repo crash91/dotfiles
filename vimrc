@@ -67,13 +67,12 @@ endfunction
 " plugins
 let g:lightline = { 'colorscheme': 'powerlineish' }
 
-let g:ale_fixers = {}
-let g:ale_fixers.c = ['clang-format']
-let g:ale_fixers.python = ['black']
-let g:ale_linters = {}
-let g:ale_linters.c = ['clang']
-let g:ale_linters.python = ['autopep8']
-let g:ale_lint_on_enter = 0
+let g:ale_fixers = {
+\ '*' : ['remove_trailing_lines', 'trim_whitespace'],
+\ 'c': ['clang-format'],
+\ 'python': ['black'],
+\}
+" let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 let g:ale_sign_error = '●'
 let g:ale_sign_warning = '.'

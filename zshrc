@@ -75,7 +75,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(colorize fzf z zsh-syntax-highlighting)
+plugins=(colored-man-pages ripgrep z zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -87,8 +87,9 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
+export EDITOR='vim'
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+#   export EDITOR='vim':
 # else
 #   export EDITOR='mvim'
 # fi
@@ -121,6 +122,7 @@ export FZF_ALT_C_COMMAND='rg --files --hidden'
 export FZF_ALT_C_OPTS="--preview 'bat --color=always --style=numers --line-range=:500 {}'"
 export FZF_TMUX=1
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export BAT_THEME="Visual Studio Dark+"
 
 # brew
 eval "$(/home/crash/.linuxbrew/bin/brew shellenv)"

@@ -1,0 +1,46 @@
+- clean: ['~']
+
+- link:
+    ~/.gitconfig: gitconfig
+    ~/.p10k.zsh:
+      force: true
+      relink: true
+      path: p10k.zsh
+    ~/.tmux.conf: 
+      force: true 
+      relink: true
+      path: tmux.conf
+    ~/.vimrc:
+      force: true 
+      relink: true
+      path: vimrc
+    ~/.zshrc: 
+      force: true 
+      relink: true
+      path: zshrc
+
+- shell:
+  - git submodule update --init --recursive
+  - command: chsh -s $(which zsh)
+    stdin: true
+    stdout: true
+    stderr: true
+  - git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+  - git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+  - command: wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh && sh ./Mambaforge-Linux-x86_64.sh
+    stdin: true
+    stdout: true
+    stderr: true
+  - rm ./Mambaforge-Linux-x86_64.sh
+  - command: ~/mambaforge/bin/conda init zsh 
+    stdin: true
+    stdout: true
+    stderr: true
+  - command: ~/mambaforge/bin/conda install numpy scipy black jedi matplotlib autopep8
+    stdin: true
+    stdout: true
+    stderr: true
+  - command: pip3 install soundfile ptpython
+    stdin: true
+    stdout: true
+    stderr: true

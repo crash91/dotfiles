@@ -9,7 +9,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/tmu/.oh-my-zsh"
+export ZSH="/home/crash/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -125,21 +125,21 @@ export FZF_TMUX=1
 export BAT_THEME="Visual Studio Dark+"
 
 # brew
-eval "$(/home/tmu/.linuxbrew/bin/brew shellenv)"
+eval "$(/home/crash/.linuxbrew/bin/brew shellenv)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/tmu/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/crash/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/tmu/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/home/tmu/mambaforge/etc/profile.d/conda.sh"
+    if [ -f "/home/crash/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/home/crash/mambaforge/etc/profile.d/conda.sh"
     else
-        export PATH="/home/tmu/mambaforge/bin:$PATH"
+        export PATH="/home/crash/mambaforge/bin:$PATH"
     fi
 fi
 unset __conda_setup

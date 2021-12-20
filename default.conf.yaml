@@ -31,8 +31,8 @@
   - ~/.linuxbrew/bin/brew install bat ripgrep 
   # tpm
   - git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    # python with mambaforge
   - wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh && sh ./Mambaforge-Linux-x86_64.sh
-  # python with mambaforge
   - rm ./Mambaforge-Linux-x86_64.sh
   - ~/mambaforge/bin/conda init zsh 
   - ~/mambaforge/bin/conda install black flake8 jedi jupyter notebook numpy matplotlib scipy tqdm

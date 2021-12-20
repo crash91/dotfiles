@@ -117,9 +117,9 @@ bindkey -v
 export FZF_DEFAULT_COMMAND='rg --files --hidden'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export FZF_CTRL_T_COMMAND='rg --files --hidden'
-export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numers --line-range=:500 {}'"
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 export FZF_ALT_C_COMMAND='rg --files --hidden'
-export FZF_ALT_C_OPTS="--preview 'bat --color=always --style=numers --line-range=:500 {}'"
+export FZF_ALT_C_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 export FZF_TMUX=1
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export BAT_THEME="Visual Studio Dark+"

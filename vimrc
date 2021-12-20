@@ -80,6 +80,7 @@ let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '❕'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.4, 'border': 'rounded', 'yoffset': 1.0} }
 let g:rainbow_active = 1
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " VimPlug
 if empty(glob('~/.vim/autoload/plug.vim'))

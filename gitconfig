@@ -3,3 +3,5 @@
 	email = archit.tamarapu@gmail.com
 [core]
 	editor = vim
+[alias]
+	up = "!git remote update -p; git merge --ff-only @{u}"

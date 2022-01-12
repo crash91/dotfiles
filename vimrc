@@ -70,15 +70,15 @@ set hlsearch            " highlight matches
 " keybindings 
 let mapleader = " "
 set timeoutlen=500
-map <leader>r :call ToggleRelnumber()<CR>
-map <leader>n :tabn<CR>
-map <leader>p :tabp<CR>
-map <leader>e :Explore<CR>
-map <leader>f :Files<CR>
-map <leader>b :Buffers<CR>
-map <leader>g :Rg<CR>
+nnoremap <leader>r :call ToggleRelnumber()<CR>
+nnoremap <leader>n :tabn<CR>
+nnoremap <leader>p :tabp<CR>
+nnoremap <leader>e :Explore<CR>
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>g :Rg <C-R><C-W><CR>
 nnoremap <F9> :Black<CR>
-nmap <silent> <C-e> <Plug>(ale_next_wrap)
+nnoremap <silent> <C-e> <Plug>(ale_next_wrap)
 
 " netrw tweaks
 let g:netrw_liststyle=3
@@ -107,7 +107,7 @@ let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '❕'
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.4, 'border': 'rounded', 'yoffset': 1.0} }
+let g:fzf_layout = { 'down': '40%' }
 let g:rainbow_active = 1
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 

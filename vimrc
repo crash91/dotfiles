@@ -9,18 +9,22 @@ endif
 call plug#begin('~/.vim/plugins')
 
 " Declare the list of plugins.
+Plug 'b4winckler/vim-angry'
 Plug 'dense-analysis/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'kurkale6ka/vim-pairs'
 Plug 'luochen1990/rainbow'
 Plug 'maralla/completor.vim'
 Plug 'psf/black', { 'branch': 'stable' }
+Plug 'rhysd/clever-f.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tomasiser/vim-code-dark'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'yggdroot/indentLine'
 
@@ -38,6 +42,11 @@ set showmatch           " highlight matching [{()}]
 set showcmd
 set noshowmode
 set mouse=a
+if has("mouse_sgr")     " fix to allow resize with mouse inside tmux
+    set ttymouse=sgr
+else
+    set ttymouse=xterm2
+end
 set number
 set guioptions+=a 
 set ruler               " show file stats
@@ -78,7 +87,8 @@ nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>g :Rg <C-R><C-W><CR>
 nnoremap <F9> :Black<CR>
-nnoremap <silent> <C-e> <Plug>(ale_next_wrap)
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " netrw tweaks
 let g:netrw_liststyle=3
@@ -103,6 +113,11 @@ let g:ale_fixers = {
 \ 'c': ['clang-format'],
 \ 'python': ['black'],
 \}
+let g:ale_linters = {
+\ 'c': ['cc', 'clangtidy'],
+\ 'python': ['flake8'],
+\}
+let g:ale_python_flake8_options = "--ignore=E203,E501 --max-line-length 88"
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
 let g:ale_sign_error = '❌'

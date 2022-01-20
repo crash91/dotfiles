@@ -132,7 +132,9 @@ eval "$(/home/tmu/.linuxbrew/bin/brew shellenv)"
 # add to PATH
 export PATH="/home/tmu/bin:$PATH"
 export PATH="/home/amm-archiv/soft/Linux/bin:$PATH"
-export PATH="/home/amm-archiv/soft/Linux/clang/current/bin:$PATH"
+#export PATH="/home/amm-archiv/soft/Linux/clang/current/bin:$PATH"
+export PATH="/local/nodejs/node-v16.13.2-linux-x64/bin:$PATH"
+export PATH="/local/clang/clang+llvm-13.0.0-x86_64/bin:$PATH"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

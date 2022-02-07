@@ -18,6 +18,7 @@ Plug 'kurkale6ka/vim-pairs'
 Plug 'luochen1990/rainbow'
 Plug 'maralla/completor.vim'
 Plug 'psf/black', { 'branch': 'stable' }
+Plug 'puremourning/vimspector'
 Plug 'rhysd/clever-f.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tomasiser/vim-code-dark'

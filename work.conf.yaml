@@ -39,3 +39,5 @@
   - pip3 install soundfile ptpython
     # internal git + scripts repo
   - git clone git@git01.iis.fhg.de:tmu/utility-scripts.git ~/utility-scripts
+  - ln -s ~/utility-scripts/svn_diff_wrapper.sh ~/bin/svn_diff
+  - ln -s ~/utility-scripts/c_code/parse_complexity.py ~/bin/parse_cmplx

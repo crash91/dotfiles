@@ -37,3 +37,5 @@
   - ~/mambaforge/bin/conda init zsh 
   - ~/mambaforge/bin/conda install black flake8 jedi jupyter notebook numpy matplotlib scipy tqdm
   - pip3 install soundfile ptpython
+    # internal git + scripts repo
+  - git clone git@git01.iis.fhg.de:tmu/utility-scripts.git ~/utility-scripts

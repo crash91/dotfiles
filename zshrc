@@ -103,7 +103,7 @@ export EDITOR='vim'
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias cat="bat"
+alias cat="ccat"
 alias duh="du -h -s *"
 
 HISTFILE=~/.histfile
@@ -126,6 +126,8 @@ export BAT_THEME="Visual Studio Dark+"
 
 # brew
 eval "$(/home/crash/.linuxbrew/bin/brew shellenv)"
+
+export PATH="/home/crash/.cargo/bin:$PATH"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

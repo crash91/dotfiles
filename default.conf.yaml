@@ -11,6 +11,7 @@
 - clean: ['~']
 
 - link:
+    ~/.config/alacritty.yml: alacritty.yml
     ~/.gitconfig: gitconfig
     ~/.p10k.zsh: p10k.zsh
     ~/.tmux.conf: tmux.conf
@@ -28,7 +29,7 @@
   - ~/.fzf/install
   # linuxbrew for rg and bat
   - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  - ~/.linuxbrew/bin/brew install bat ripgrep 
+  - /home/linuxbrew/.linuxbrew/bin/brew install bat ripgrep 
   # tpm
   - git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     # python with mambaforge

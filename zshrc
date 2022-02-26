@@ -103,7 +103,6 @@ export EDITOR='vim'
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias cat="ccat"
 alias duh="du -h -s *"
 
 HISTFILE=~/.histfile
@@ -117,15 +116,17 @@ bindkey -v
 export FZF_DEFAULT_COMMAND='rg --files --hidden'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export FZF_CTRL_T_COMMAND='rg --files --hidden'
-export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}'"
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --theme=Visual Studio Dark+ --line-range=:500 {}'"
+# export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 export FZF_ALT_C_COMMAND='rg --files --hidden'
 export FZF_ALT_C_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}'"
+# export FZF_ALT_C_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 export FZF_TMUX=1
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export BAT_THEME="Visual Studio Dark+"
 
 # brew
-eval "$(/home/crash/.linuxbrew/bin/brew shellenv)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 export PATH="/home/crash/.cargo/bin:$PATH"
 

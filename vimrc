@@ -23,6 +23,7 @@ Plug 'rhysd/clever-f.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tomasiser/vim-code-dark'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -34,7 +35,7 @@ call plug#end()
 
 
 set nocompatible
-" general config 
+" general config
 colorscheme codedark
 syntax on               " syntax highlighting
 
@@ -49,7 +50,7 @@ else
     set ttymouse=xterm2
 end
 set number
-set guioptions+=a 
+set guioptions+=a
 set ruler               " show file stats
 set autoread            " reload externally modified files
 set noswapfile
@@ -63,7 +64,7 @@ set laststatus=2        " vim-lightline
 set showtabline=2
 
 " whitespace
-set tabstop=4 
+set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
@@ -77,7 +78,7 @@ nnoremap P P=`]<C-o>
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 
-" keybindings 
+" keybindings
 let mapleader = " "
 set timeoutlen=500
 nnoremap <leader>r :call ToggleRelnumber()<CR>
@@ -102,12 +103,12 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
-" functions 
+" functions
 function! ToggleRelnumber()
     set norelativenumber!
 endfunction
 
-" plugins 
+" plugins
 let g:lightline = { 'colorscheme': 'powerlineish' }
 let g:ale_fixers = {
 \ '*' : ['remove_trailing_lines', 'trim_whitespace'],
@@ -126,4 +127,3 @@ let g:ale_sign_warning = '❕'
 let g:fzf_layout = { 'down': '40%' }
 let g:rainbow_active = 1
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-

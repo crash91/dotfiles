@@ -18,7 +18,6 @@ Plug 'kurkale6ka/vim-pairs'
 Plug 'luochen1990/rainbow'
 Plug 'maralla/completor.vim'
 Plug 'psf/black', { 'branch': 'stable' }
-Plug 'puremourning/vimspector'
 Plug 'rhysd/clever-f.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tomasiser/vim-code-dark'
@@ -28,10 +27,13 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
+Plug 'unblevable/quick-scope'
 Plug 'yggdroot/indentLine'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
+
+packadd! termdebug
 
 
 set nocompatible
@@ -88,7 +90,7 @@ nnoremap <leader>e :Explore<CR>
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>g :Rg <C-R><C-W><CR>
-nnoremap <F9> :Black<CR>
+nnoremap <F9> :ALEFix<CR>
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
@@ -119,11 +121,12 @@ let g:ale_linters = {
 \ 'c': ['cc', 'clangtidy'],
 \ 'python': ['flake8'],
 \}
-let g:ale_python_flake8_options = "--ignore=E203,E501 --max-line-length 88"
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
+let g:ale_python_flake8_options = "--ignore=E203,E501 --max-line-length 88"
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '❕'
 let g:fzf_layout = { 'down': '40%' }
-let g:rainbow_active = 1
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_concealcursor = "nv"
+let g:rainbow_active = 1

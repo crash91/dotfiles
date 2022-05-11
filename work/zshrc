@@ -110,7 +110,10 @@ HISTSIZE=100000
 SAVEHIST=100000
 setopt autocd notify
 unsetopt beep
+
+# vi keybindings
 bindkey -v
+bindkey -M vicmd v edit-command-line
 
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden'

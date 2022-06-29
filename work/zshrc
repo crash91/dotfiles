@@ -103,7 +103,7 @@ export EDITOR='vim'
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias duh="du -h -s *"
+alias duh="du -h -s -d1 *"
 
 HISTFILE=~/.histfile
 HISTSIZE=100000
@@ -128,30 +128,35 @@ export FZF_TMUX=1
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export BAT_THEME="Visual Studio Dark+"
 
-# brew
+# various tools
 eval "$(/home/tmu/.linuxbrew/bin/brew shellenv)"
+export DENO_INSTALL="/home/tmu/.deno"
+export TEST_TMPDIR="/local/tmu" # bazel
+export CARGO_HOME="/local/tmu/.cargo"
+export RUSTUP_HOME="/local/tmu/.rustup"
 
-# add to PATH
+# change PATH
 export PATH="/home/tmu/bin:$PATH"
 export PATH="/home/amm-archiv/soft/Linux/bin:$PATH"
 #export PATH="/home/amm-archiv/soft/Linux/clang/current/bin:$PATH"
 export PATH="/local/nodejs/node-v16.13.2-linux-x64/bin:$PATH"
 export PATH="/local/clang/clang+llvm-13.0.0-x86_64/bin:$PATH"
 export PATH="/local/coan/bin:$PATH"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/tmu/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/local/tmu/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/tmu/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/home/tmu/mambaforge/etc/profile.d/conda.sh"
+    if [ -f "/local/tmu/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/local/tmu/mambaforge/etc/profile.d/conda.sh"
     else
-        export PATH="/home/tmu/mambaforge/bin:$PATH"
+        export PATH="/local/tmu/mambaforge/bin:$PATH"
     fi
 fi
 unset __conda_setup

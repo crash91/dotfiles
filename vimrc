@@ -10,6 +10,7 @@ call plug#begin('~/.vim/plugins')
 
 " Declare the list of plugins.
 Plug 'b4winckler/vim-angry'
+Plug 'chrisbra/vim-autosave'
 Plug 'dense-analysis/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -28,12 +29,11 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'unblevable/quick-scope'
+Plug 'yegappan/taglist'
 Plug 'yggdroot/indentLine'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
-
-packadd! termdebug
 
 
 set nocompatible
@@ -79,6 +79,11 @@ nnoremap P P=`]<C-o>
 " search
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
+set scrolloff=10        " always scroll to show context for search results
+
+" project-specific vimrc
+set exrc                " allow local vimrc files
+set secure              " don't allow autocmd, shell and write commands in local vimrc files
 
 " keybindings
 let mapleader = " "
@@ -91,6 +96,11 @@ nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>g :Rg <C-R><C-W><CR>
 nnoremap <F9> :ALEFix<CR>
+" termdebug
+nnoremap <leader>w :call TermDebugSendCommand('where')<CR>
+nnoremap <F5> :TermDebug<CR>
+nnoremap <F10> :Over<CR>
+nnoremap <F11> :Next<CR>
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
@@ -111,6 +121,8 @@ function! ToggleRelnumber()
 endfunction
 
 " plugins
+packadd! termdebug      " visual debugging with gdb 
+let g:termdebug_wide=1
 let g:lightline = { 'colorscheme': 'powerlineish' }
 let g:ale_fixers = {
 \ '*' : ['remove_trailing_lines', 'trim_whitespace'],
@@ -126,6 +138,8 @@ let g:ale_lint_on_save = 1
 let g:ale_python_flake8_options = "--ignore=E203,E501 --max-line-length 88"
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '❕'
+let g:autosave_backup = '~/.vim/backup'
+let g:autosave_timer = 60*3*1000
 let g:fzf_layout = { 'down': '40%' }
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_concealcursor = "nv"

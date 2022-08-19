@@ -9,6 +9,7 @@ endif
 call plug#begin('~/.vim/plugins')
 
 " Declare the list of plugins.
+Plug 'airblade/vim-gitgutter'
 Plug 'b4winckler/vim-angry'
 Plug 'chrisbra/vim-autosave'
 Plug 'dense-analysis/ale'
@@ -17,18 +18,21 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'kurkale6ka/vim-pairs'
 Plug 'luochen1990/rainbow'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'maralla/completor.vim'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'rhysd/clever-f.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tomasiser/vim-code-dark'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'
 Plug 'unblevable/quick-scope'
+Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'wellle/targets.vim'
 Plug 'yegappan/taglist'
 Plug 'yggdroot/indentLine'
 
@@ -73,8 +77,8 @@ set expandtab
 set smarttab
 set autoindent
 " auto indent pasted text
-nnoremap p p=`]<C-o>
-nnoremap P P=`]<C-o>
+" nnoremap p p=`]<C-o>
+" nnoremap P P=`]<C-o>
 
 " search
 set incsearch           " search as characters are entered
@@ -96,6 +100,17 @@ nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>g :Rg <C-R><C-W><CR>
 nnoremap <F9> :ALEFix<CR>
+nnoremap <C-f> :FZF<CR>
+nnoremap <leader>gb :Git blame<CR>
+nnoremap <leader>gd :Git diff<CR>
+nnoremap <leader>gs :Git status<CR>
+
+" fat fingers - shift key pressed too long
+cabbrev Q quit
+cabbrev W write
+cabbrev WQ wq
+cabbrev Wq wq
+
 " termdebug
 nnoremap <leader>w :call TermDebugSendCommand('where')<CR>
 nnoremap <F5> :TermDebug<CR>

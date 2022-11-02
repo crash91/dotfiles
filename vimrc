@@ -23,6 +23,7 @@ Plug 'maralla/completor.vim'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'rhysd/clever-f.vim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'tmux-plugins/vim-tmux'
 Plug 'tomasiser/vim-code-dark'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -32,6 +33,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'unblevable/quick-scope'
 Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'wellle/context.vim'
 Plug 'wellle/targets.vim'
 Plug 'yegappan/taglist'
 Plug 'yggdroot/indentLine'
@@ -107,6 +109,7 @@ nnoremap <leader>gs :Git status<CR>
 
 " fat fingers - shift key pressed too long
 cabbrev Q quit
+cabbrev Qa qa
 cabbrev W write
 cabbrev WQ wq
 cabbrev Wq wq

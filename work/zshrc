@@ -88,7 +88,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-export EDITOR='vim'
+export EDITOR='nvim'
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim':
 # else
@@ -109,6 +109,7 @@ alias make="make -j"
 alias msan="make CLANG=1"
 alias asan="make CLANG=2"
 alias wmops="make WMOPS=1"
+alias vim=nvim
 
 HISTFILE=~/.histfile
 HISTSIZE=100000
@@ -136,7 +137,7 @@ export BAT_THEME="Visual Studio Dark+"
 # various tools
 eval "$(/home/tmu/.linuxbrew/bin/brew shellenv)"
 export DENO_INSTALL="/home/tmu/.deno"
-export TEST_TMPDIR="/local/tmu" # bazel
+# export TEST_TMPDIR="/local/tmu" # bazel
 export CARGO_HOME="/local/tmu/.cargo"
 export RUSTUP_HOME="/local/tmu/.rustup"
 
@@ -145,7 +146,7 @@ export PATH="/home/tmu/bin:$PATH"
 export PATH="/home/amm-archiv/soft/Linux/bin:$PATH"
 #export PATH="/home/amm-archiv/soft/Linux/clang/current/bin:$PATH"
 export PATH="/local/nodejs/node-v16.13.2-linux-x64/bin:$PATH"
-export PATH="/local/clang/clang+llvm-13.0.0-x86_64/bin:$PATH"
+export PATH="/local/clang/clang+llvm-13.0.1-x86_64-linux-gnu-ubuntu-18.04/bin:$PATH"
 export PATH="/local/coan/bin:$PATH"
 export PATH="$DENO_INSTALL/bin:$PATH"
 

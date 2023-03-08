@@ -37,23 +37,23 @@ endif
 call plug#end()
 
 " plugin config
-let g:ale_fixers = {
-\ '*' : ['remove_trailing_lines', 'trim_whitespace'],
-\ 'c': ['clang-format'],
-\ 'python': ['black'],
-\}
-let g:ale_linters = {
-\ 'c': ['cc', 'clangtidy'],
-\ 'python': ['flake8'],
-\}
-let g:ale_lint_on_enter = 1
-let g:ale_lint_on_save = 1
-let g:ale_python_flake8_options = "--ignore=E203,E501 --max-line-length 88"
-let g:ale_sign_error = '❌'
-let g:ale_sign_warning = '❕'
-let g:fzf_layout = { 'down': '40%' }
 if !exists('g:vscode')
     colorscheme codedark
+    let g:ale_fixers = {
+    \ '*' : ['remove_trailing_lines', 'trim_whitespace'],
+    \ 'c': ['clang-format'],
+    \ 'python': ['black'],
+    \}
+    let g:ale_linters = {
+    \ 'c': ['cc', 'clangtidy'],
+    \ 'python': ['flake8'],
+    \}
+    let g:ale_lint_on_enter = 1
+    let g:ale_lint_on_save = 1
+    let g:ale_python_flake8_options = "--ignore=E203,E501 --max-line-length 88"
+    let g:ale_sign_error = '❌'
+    let g:ale_sign_warning = '❕'
+    let g:fzf_layout = { 'down': '40%' }
     let g:lightline = { 'colorscheme': 'powerlineish' }
     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
     let g:indentLine_concealcursor = "nv"
@@ -110,21 +110,6 @@ set exrc                " allow local vimrc files
 set secure              " don't allow autocmd, shell and write commands in local vimrc files
 
 " keybindings
-let mapleader = " "
-set timeoutlen=500
-nnoremap <leader>r :call ToggleRelnumber()<CR>
-nnoremap <leader>n :tabn<CR>
-nnoremap <leader>p :tabp<CR>
-nnoremap <leader>e :Explore<CR>
-nnoremap <leader>f :Files<CR>
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>g :Rg <C-R><C-W><CR>
-nnoremap <F9> :ALEFix<CR>
-nnoremap <C-f> :FZF<CR>
-nnoremap <leader>gb :Git blame<CR>
-nnoremap <leader>gd :Git diff<CR>
-nnoremap <leader>gs :Git status<CR>
-
 " fat fingers - shift key pressed too long
 cabbrev Q quit
 cabbrev Qa qa
@@ -132,23 +117,38 @@ cabbrev W write
 cabbrev WQ wq
 cabbrev Wq wq
 
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
-" netrw tweaks
-let g:netrw_liststyle=3
-let g:netrw_banner=0
-let g:netrw_browse_split=3
-let g:netrw_winsize=15
-
 if !exists('g:vscode')
+    let mapleader = " "
+    set timeoutlen=500
+    nnoremap <leader>r :call ToggleRelnumber()<CR>
+    nnoremap <leader>n :tabn<CR>
+    nnoremap <leader>p :tabp<CR>
+    nnoremap <leader>e :Explore<CR>
+    nnoremap <leader>f :Files<CR>
+    nnoremap <leader>b :Buffers<CR>
+    nnoremap <leader>g :Rg <C-R><C-W><CR>
+    nnoremap <F9> :ALEFix<CR>
+    nnoremap <C-f> :FZF<CR>
+    nnoremap <leader>gb :Git blame<CR>
+    nnoremap <leader>gd :Git diff<CR>
+    nnoremap <leader>gs :Git status<CR>
+    nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+    nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+    " netrw tweaks
+    let g:netrw_liststyle=3
+    let g:netrw_banner=0
+    let g:netrw_browse_split=3
+    let g:netrw_winsize=15
+
     " complete with tab instead
     inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
     inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+
+    " functions
+    function! ToggleRelnumber()
+        set norelativenumber!
+    endfunction
 endif
 
-" functions
-function! ToggleRelnumber()
-    set norelativenumber!
-endfunction

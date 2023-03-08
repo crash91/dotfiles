@@ -1,7 +1,65 @@
 [user]
 	name = Archit Tamarapu
-	email = archit.tamarapu@gmail.com
-[core]
-	editor = vim
+	email = archit.tamarapu@iis.fraunhofer.de
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[credential "https://git01.iis.fhg.de"]
+	provider = generic
+[pull]
+	rebase = false
+[fetch]
+    prune = true
+[diff]
+	tool = nvimdiff2
+    colorMoved = default
+[difftool]
+	prompt = false
 [alias]
-	up = "!git remote update -p; git merge --ff-only @{u}"
+	au = add -u
+	br = branch
+	co = checkout
+	dt = difftool
+    lg = log --graph --decorate --pretty=oneline --abbrev-commit --all --date=local
+    ll = log --oneline
+	st = status -s
+    wt = worktree
+[http]
+	sslVerify = true
+[merge]
+	tool = nvimdiff2
+    conflictstyle = diff3
+[help]
+	autocorrect = 1
+[core]
+	editor = nvim
+	pager = delta
+	excludesFile = ~/.gitignore
+[delta]
+    features = decorations unobtrusive-line-numbers
+    dark = true
+    navigate = true
+[delta "unobtrusive-line-numbers"]
+    line-numbers-left-format = "{nm:>4}┊"
+    line-numbers-left-style = dim red
+    line-numbers-minus-style = dim red
+    line-numbers-plus-style = green
+    line-numbers-right-format = "{np:>4}│"
+    line-numbers-right-style = dim green
+    line-numbers = true
+    line-numbers-zero-style = dim white
+[delta "decorations"]
+    commit-decoration-style = orange ul ol
+    file-style = omit
+    hunk-header-decoration-style = orange box
+    hunk-header-file-style = orange
+    hunk-header-line-number-style = bold green
+    hunk-header-style = file line-number syntax
+    minus-emph-style = dim red ul
+    minus-style = dim red
+    plus-emph-style = green bold ul
+    plus-style = green
+    syntax-theme = Visual Studio Dark+
+    zero-style = syntax

@@ -16,7 +16,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
-Plug 'wellle/context.vim'
 Plug 'wellle/targets.vim'
 if !exists('g:vscode')
     " vim/nvim only
@@ -27,11 +26,20 @@ if !exists('g:vscode')
     Plug 'junegunn/fzf.vim'
     Plug 'luochen1990/rainbow'
     Plug 'maralla/completor.vim'
+    Plug 'maximbaz/lightline-ale'
+    Plug 'ptzz/lf.vim'
     Plug 'ryanoasis/vim-devicons'
     Plug 'tmux-plugins/vim-tmux'
     Plug 'tomasiser/vim-code-dark'
+    Plug 'voldikss/vim-floaterm'
+    Plug 'wellle/context.vim'
     Plug 'yegappan/taglist'
     Plug 'yggdroot/indentLine'
+    if has('nvim')
+        Plug 'nvim-lua/plenary.nvim'
+        Plug 'nvim-tree/nvim-web-devicons'
+        Plug 'sindrets/diffview.nvim'
+    endif
 endif
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -54,7 +62,36 @@ if !exists('g:vscode')
     let g:ale_sign_error = '❌'
     let g:ale_sign_warning = '❕'
     let g:fzf_layout = { 'down': '40%' }
-    let g:lightline = { 'colorscheme': 'powerlineish' }
+    let g:lightline = {
+                \ 'colorscheme': 'powerlineish',
+                \ 'active': {
+                \   'left': [ [ 'mode', 'paste' ],
+                \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+                \ },
+                \ 'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+                \            [ 'lineinfo' ],
+	            \            [ 'percent' ],
+	            \            [ 'fileformat', 'fileencoding', 'filetype'] ],
+                \ 'component_function': {
+                \   'gitbranch': 'FugitiveHead',
+                \   'filetype': 'MyFiletype',
+                \   'fileformat': 'MyFileformat',
+                \ }
+                \ }
+    let g:lightline.component_expand = {
+                \  'linter_checking': 'lightline#ale#checking',
+                \  'linter_infos': 'lightline#ale#infos',
+                \  'linter_warnings': 'lightline#ale#warnings',
+                \  'linter_errors': 'lightline#ale#errors',
+                \  'linter_ok': 'lightline#ale#ok',
+                \ }
+    let g:lightline.component_type = {
+                \ 'linter_checking': 'right',
+                \ 'linter_infos': 'right',
+                \ 'linter_warnings': 'warning',
+                \ 'linter_errors': 'error',
+                \ 'linter_ok': 'right',
+                \ }
     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
     let g:indentLine_concealcursor = "nv"
     let g:rainbow_active = 1
@@ -96,18 +133,13 @@ set softtabstop=4
 set expandtab
 set smarttab
 set autoindent
-" auto indent pasted text
-" nnoremap p p=`]<C-o>
-" nnoremap P P=`]<C-o>
+set fillchars+=diff:╱
 
 " search
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 set scrolloff=10        " always scroll to show context for search results
 
-" project-specific vimrc
-set exrc                " allow local vimrc files
-set secure              " don't allow autocmd, shell and write commands in local vimrc files
 
 " keybindings
 " fat fingers - shift key pressed too long
@@ -116,22 +148,24 @@ cabbrev Qa qa
 cabbrev W write
 cabbrev WQ wq
 cabbrev Wq wq
+if has('nvim')
+    cabbrev dv DiffviewOpen
+endif
 
 if !exists('g:vscode')
     let mapleader = " "
     set timeoutlen=500
-    nnoremap <leader>r :call ToggleRelnumber()<CR>
-    nnoremap <leader>n :tabn<CR>
-    nnoremap <leader>p :tabp<CR>
-    nnoremap <leader>e :Explore<CR>
-    nnoremap <leader>f :Files<CR>
-    nnoremap <leader>b :Buffers<CR>
-    nnoremap <leader>g :Rg <C-R><C-W><CR>
     nnoremap <F9> :ALEFix<CR>
-    nnoremap <C-f> :FZF<CR>
+    nnoremap <leader>b :Buffers<CR>
+    nnoremap <leader>dd :DiffviewOpen<CR>
+    nnoremap <leader>dh :DiffviewFileHistory<CR>
+    nnoremap <leader>dg :diffget
+    nnoremap <leader>dp :diffput
+    nnoremap <leader>g :Rg <C-R><C-W><CR>
     nnoremap <leader>gb :Git blame<CR>
     nnoremap <leader>gd :Git diff<CR>
     nnoremap <leader>gs :Git status<CR>
+    nnoremap <leader>r :call ToggleRelnumber()<CR>
     nmap <silent> <C-k> <Plug>(ale_previous_wrap)
     nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
@@ -150,5 +184,12 @@ if !exists('g:vscode')
     function! ToggleRelnumber()
         set norelativenumber!
     endfunction
-endif
 
+    function! MyFiletype()
+      return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+    endfunction
+
+    function! MyFileformat()
+      return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+    endfunction
+endif

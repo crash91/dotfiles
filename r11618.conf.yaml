@@ -1,0 +1,19 @@
+- defaults: 
+    link:
+      create: true
+      force: true
+      relink: true
+    shell:
+      stdin: true
+      stdout: true
+      stderr: true
+
+- clean: ['~']
+
+- link:
+    ~/.gitconfig: gitconfig
+    ~/.p10k.zsh: p10k.zsh
+    ~/.tmux.conf: tmux.conf
+    ~/.vimrc: vimrc
+    ~/.zshrc: zshrc
+

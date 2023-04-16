@@ -108,11 +108,17 @@ alias asan="make CLANG=2"
 alias wmops="make WMOPS=1"
 
 alias cd=z
+
 alias diff=delta
 alias duh="du -hs *"
-alias ipy=ptipython
+
+alias py=python
 alias python3=python
+alias ipy=ptipython
+
 alias tree="exa --tree -L 1"
+
+alias vi=nvim
 alias vim=nvim
 
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
@@ -146,7 +152,11 @@ eval "$(zoxide init zsh)"
 export PATH="/Users/tmu/bin:$PATH"
 export PATH="/Users/tmu/git/STL/bin:$PATH"
 export PATH="/opt/homebrew/opt/qt@5/bin:$PATH"
-export PATH="/Users/tmu/clang+llvm-13.0.1-x86_64-apple-darwin/bin":$PATH
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/llvm@13/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/llvm@13/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm@13/include"
+# export PATH="/Users/tmu/clang+llvm-13.0.1-x86_64-apple-darwin/bin":$PATH
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
